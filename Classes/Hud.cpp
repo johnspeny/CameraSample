@@ -17,4 +17,6 @@ Hud::Hud() :
 {
 	//_layer->setAnchorPoint({ 0, 0 });
 	_layer->addChild(_logo);
+
+	_logo->setPosition(ax::Vec2(50, 50));
 }
