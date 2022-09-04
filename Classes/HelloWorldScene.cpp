@@ -38,7 +38,16 @@ bool HelloWorld::init()
 	// Initialize Hud
 	_hud = Hud::getInstance();
 	_hud->getLayer()->setCameraMask(static_cast<uint16_t>(_hudCamera->getCameraFlag()));
-	addChild(_hud->getLayer());
+	addChild(_hud->getLayer(), 99999);
+
+	// Initialize Game World which has a static body at position 0,0
+	_gameWorld = GameWorld::getInstance();
+	addChild(_gameWorld->getLayer(), -99999);
+
+	// Create b2DebugRenderer
+	_b2dr = b2DebugRenderer::create(_gameWorld->getWorld());
+	_b2dr->setVisible(true);
+	addChild(_b2dr);
 
 	return true;
 }

@@ -28,6 +28,8 @@
 
 #include "axys.h"
 #include "Hud.h"
+#include "util/box2d/b2DebugRenderer.h"
+#include "GameWorld.h"
 
 class HelloWorld : public axis::Scene
 {
@@ -36,6 +38,9 @@ public:
 private:
 	ax::Camera* _gameCamera;
 	ax::Camera* _hudCamera;
+
+	GameWorld* _gameWorld;
+	b2DebugRenderer* _b2dr;
 	Hud* _hud;
 };
 

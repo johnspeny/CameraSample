@@ -79,11 +79,19 @@ list(APPEND GAME_SOURCE
      Classes/AppDelegate.cpp
      Classes/HelloWorldScene.cpp
      Classes/Hud.cpp
+     Classes/GameWorld.cpp
+     Classes/util/box2d/b2BodyBuilder.cpp
+     Classes/util/box2d/b2DebugRenderer.cpp
+     Classes/util/box2d/GLESDebugDraw.cpp
      )
 list(APPEND GAME_HEADER
      Classes/AppDelegate.h
      Classes/HelloWorldScene.h
+     Classes/GameWorld.h
      Classes/Hud.h
+     Classes/util/box2d/b2BodyBuilder.h
+     Classes/util/box2d/b2DebugRenderer.h
+     Classes/util/box2d/GLESDebugDraw.h
      )
 
 if(ANDROID)
