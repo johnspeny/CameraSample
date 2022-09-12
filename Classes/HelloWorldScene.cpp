@@ -12,6 +12,10 @@ bool HelloWorld::init()
 		return false;
 	}
 
+	this->setContentSize(ax::Vec2(ax::Director::getInstance()->getVisibleSize().width, ax::Director::getInstance()->getVisibleSize().height));
+	this->setIgnoreAnchorPointForPosition(false);
+	this->setAnchorPoint({ 0.5f, 0.5f });
+
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	auto origin = Director::getInstance()->getVisibleOrigin();
 	auto safeArea = Director::getInstance()->getSafeAreaRect();
@@ -24,7 +28,7 @@ bool HelloWorld::init()
 	_gameCamera->initOrthographic(winSize.width, winSize.height, 1, 1000);
 	_gameCamera->setPosition({ 0, 0 });
 
-	// Initialize HUD Camera
+	//// Initialize HUD Camera
 	_hudCamera = ax::Camera::createOrthographic(winSize.width, winSize.height, 1, 1000);
 	_hudCamera->setDepth(2);
 	_hudCamera->setCameraFlag(ax::CameraFlag::USER1);
@@ -37,12 +41,12 @@ bool HelloWorld::init()
 
 	// Initialize Hud
 	_hud = Hud::getInstance();
-	_hud->getLayer()->setCameraMask(static_cast<uint16_t>(_hudCamera->getCameraFlag()));
-	addChild(_hud->getLayer(), 99999);
+	_hud->getLayer()->setCameraMask(static_cast<uint16_t>(CameraFlag::USER1));
+	addChild(_hud->getLayer());
 
 	// Initialize Game World which has a static body at position 0,0
 	_gameWorld = GameWorld::getInstance();
-	addChild(_gameWorld->getLayer(), -99999);
+	addChild(_gameWorld->getLayer());
 
 	// Create b2DebugRenderer
 	_b2dr = b2DebugRenderer::create(_gameWorld->getWorld());

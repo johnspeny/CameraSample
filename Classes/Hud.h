@@ -10,11 +10,11 @@ public:
 	static Hud* getInstance();
 	virtual ~Hud() = default;
 
-	ax::LayerColor* getLayer() const;
+	ax::Layer* getLayer() const;
 private:
 	Hud();
 
-	ax::LayerColor* _layer;
+	ax::Layer* _layer;
 
 	ax::ui::ImageView* _logo;
 };
